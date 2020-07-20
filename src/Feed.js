@@ -166,7 +166,6 @@ export default class Feed {
       if (postIds.length === 0) {
         this.noPostsMessage.fadeIn();
       }
-      
       // Listen for new posts.
       const latestPostId = postIds[postIds.length - 1];
       this.firebaseHelper.subscribeToHomeFeed((postId, postValue) => {

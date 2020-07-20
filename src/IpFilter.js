@@ -51,7 +51,7 @@ export default class IpFilter {
       } else {
         $('.fp-non-eu').removeClass('fp-non-eu');
       }
-    } catch(e) {
+    } catch (e) {
       $('.fp-non-eu').removeClass('fp-non-eu');
     }
   }

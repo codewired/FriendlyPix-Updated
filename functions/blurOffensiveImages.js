@@ -22,7 +22,7 @@ try {
 } catch (e) {}
 const mkdirp = require('mkdirp-promise');
 const Vision = require('@google-cloud/vision');
-const vision = new Vision();
+const vision = new Vision.ImageAnnotatorClient();
 const spawn = require('child-process-promise').spawn;
 const path = require('path');
 const os = require('os');

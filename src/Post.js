@@ -119,8 +119,8 @@ export default class Post {
       const updatedComment = snap.val();
       if (updatedComment) {
         const updatedElement = this.createComment(updatedComment.author,
-          updatedComment.text, postId, commentId,
-          this.auth.currentUser && updatedComment.author.uid === this.auth.currentUser.uid);
+            updatedComment.text, postId, commentId,
+            this.auth.currentUser && updatedComment.author.uid === this.auth.currentUser.uid);
         const element = $('#comment-' + commentId);
         element.replaceWith(updatedElement);
       } else {
@@ -336,7 +336,7 @@ export default class Post {
               timer: 2000,
             });
             $('.fp-report-post', post).prop('disabled', false);
-          } catch(error) {
+          } catch (error) {
             swal.close();
             $('.fp-report-post', post).prop('disabled', false);
             const data = {
@@ -399,7 +399,7 @@ export default class Post {
           });
           $('.fp-delete-post', post).prop('disabled', false);
           page(`/user/${this.auth.currentUser.uid}`);
-        } catch(error) {
+        } catch (error) {
           swal.close();
           $('.fp-delete-post', post).prop('disabled', false);
           const data = {
@@ -506,7 +506,7 @@ export default class Post {
     const hashtags = Utils.getHashtags(text);
     let textHtml = $('<div>').text(text).html();
     hashtags.forEach((hashtag) => {
-      textHtml = textHtml.replace(new RegExp(`#${hashtag.replace(/\-/g, '\\-')}`,'i'), `<a href="/search/${hashtag}">#${hashtag}</a>`);
+      textHtml = textHtml.replace(new RegExp(`#${hashtag.replace(/\-/g, '\\-')}`, 'i'), `<a href="/search/${hashtag}">#${hashtag}</a>`);
     });
 
     try {

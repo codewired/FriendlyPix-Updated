@@ -50,7 +50,7 @@ export default class SearchPage {
     const data = await this.firebaseHelper.getHastagsPosts(hashtag);
     // Reset the UI.
     this.clear();
-    
+
     const postIds = Object.keys(data.entries);
     if (postIds.length === 0) {
       this.noPosts.show();

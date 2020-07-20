@@ -28,7 +28,7 @@ exports.byEmail = functions.database.ref('/admins/{index}/email').onCreate(async
   const adminEmail = snap.val();
   try {
     const user = await admin.auth().getUserByEmail(adminEmail);
-    await admin.auth().setCustomUserClaims(user.uid, {admin: true})
+    await admin.auth().setCustomUserClaims(user.uid, {admin: true});
     console.log(`User ${adminEmail} successfully marked as an admin.`);
     await snap.ref.parent.update({
       email: user.email || null,
@@ -74,7 +74,7 @@ exports.removeAdmins = functions.database.ref('/admins/{index}').onDelete(async 
     const user = await admin.auth().getUserByEmail(adminEmail);
     await admin.auth().setCustomUserClaims(user.uid, {admin: null});
     console.log(`User ${adminEmail} successfully unmarked as an admin.`);
-  } catch(error) {
+  } catch (error) {
     console.error(`There was an error un-marking user ${adminEmail} as an admin.`, error);
   }
 });

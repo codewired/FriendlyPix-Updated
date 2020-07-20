@@ -14,36 +14,48 @@
  * limitations under the License.
  */
 'use strict';
+import {skipWaiting, clientsClaim} from 'workbox-core';
+import {registerRoute} from 'workbox-routing';
+import {CacheFirst} from 'workbox-strategies';
+import {precacheAndRoute} from 'workbox-precaching';
+import {ExpirationPlugin} from 'workbox-expiration';
+import {StaleWhileRevalidate} from 'workbox-strategies';
+import {initialize} from 'workbox-google-analytics';
 
-// Load generated static asset caching.
-self.__precacheManifest = [].concat(self.__precacheManifest || []);
-workbox.precaching.suppressWarnings();
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+skipWaiting();
+clientsClaim();
+
 
 // Register routes for user uploaded images.
-workbox.routing.registerRoute(
-  /\.(?:png|gif|jpg|jpeg|svg)$/,
-  workbox.strategies.cacheFirst({
-    cacheName: 'images',
-    plugins: [
-      new workbox.expiration.Plugin({
-        maxEntries: 60,
-        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-      }),
-    ],
-  }),
+registerRoute(
+    /\.(?:png|gif|jpg|jpeg|svg)$/,
+    new CacheFirst({
+      cacheName: 'images',
+      plugins: [
+        new ExpirationPlugin({
+          maxEntries: 60,
+          maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+        }),
+      ],
+    }),
 );
 
 // Routes for all dynamic HTML pages.
-workbox.routing.registerRoute(
-  // Cache HTML files
-  /[^\.]*/,
-  // Use cache but update in the background ASAP
-  workbox.strategies.staleWhileRevalidate({
-    // Use a custom cache name
-    cacheName: 'html-cache',
-  })
+registerRoute(
+    // Cache HTML files
+    /[^\.]*/,
+    // Use cache but update in the background ASAP
+    new StaleWhileRevalidate({
+      // Use a custom cache name
+      cacheName: 'html-cache',
+    }),
 );
 
 // Special routes to enable offline for Google Analytics.
-workbox.googleAnalytics.initialize();
+initialize();
+
+// self.__precacheManifest = [].concat(self.__precacheManifest || []);
+// workbox.precaching.suppressWarnings();
+// workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+precacheAndRoute(self.__WB_MANIFEST);

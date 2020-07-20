@@ -376,7 +376,7 @@ export default class FirebaseHelper {
           });
           return hashtagsData;
         });
-      }
+  }
 
   /**
    * Returns the users which name match the given search query as a Promise.
@@ -413,7 +413,7 @@ export default class FirebaseHelper {
    * Saves or updates public user data in Firebase (such as image URL, display name...).
    */
   updatePublicProfile() {
-    let user = firebase.auth().currentUser;
+    const user = firebase.auth().currentUser;
     let displayName = user.displayName;
     let imageUrl = user.photoURL;
 
@@ -756,7 +756,7 @@ export default class FirebaseHelper {
       if (data.val()) {
         const followingUids = Object.keys(data.val());
         const fetchProfileDetailsOperations = followingUids.map(
-          (followingUid) => this.loadUserProfile(followingUid));
+            (followingUid) => this.loadUserProfile(followingUid));
         return Promise.all(fetchProfileDetailsOperations).then((results) => {
           const profiles = {};
           results.forEach((result) => {

@@ -37,7 +37,7 @@ export default class Messaging {
     this.auth = firebase.auth();
     try {
       this.messaging = firebase.messaging();
-    } catch(e) {
+    } catch (e) {
       if (e.code === 'messaging/unsupported-browser') {
         console.warn('This Browser does not suport FCM. Notifications won\'t be available.', e);
       } else {
@@ -73,7 +73,7 @@ export default class Messaging {
       } else {
         this.requestPermission();
       }
-    } catch(err) {
+    } catch (err) {
       console.error('Unable to get messaging token.', err);
     }
   }
@@ -89,7 +89,7 @@ export default class Messaging {
       await this.messaging.requestPermission();
       console.log('Notification permission granted.');
       this.saveToken();
-    } catch(err) {
+    } catch (err) {
       console.error('Unable to get permission to notify.', err);
     }
   }
@@ -104,7 +104,7 @@ export default class Messaging {
     if (payload.notification) {
       const userId = payload.notification.click_action.split('/user/')[1];
 
-      let data = {
+      const data = {
         message: payload.notification.body,
         actionHandler: () => page(`/user/${userId}`),
         actionText: 'Profile',

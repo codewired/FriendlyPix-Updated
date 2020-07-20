@@ -120,7 +120,7 @@ export class MaterialUtils {
     }
     element.MaterialSnackbar.cleanup_();
   }
-};
+}
 
 export class Utils {
   /**
@@ -138,14 +138,14 @@ export class Utils {
         };
         MaterialUtils.showSnackbar($('.mdl-js-snackbar'), data);
         $('.fp-disabled-when-offline').attr('disabled', 'disabled');
-      } else{
+      } else {
         console.log('User is now Online!');
         MaterialUtils.hideSnackbar($('.mdl-js-snackbar'));
         $('.fp-disabled-when-offline').removeAttr('disabled');
       }
     };
 
-    window.addEventListener('online',  updateOnlineStatus);
+    window.addEventListener('online', updateOnlineStatus);
     window.addEventListener('offline', updateOnlineStatus);
   }
 
@@ -179,6 +179,6 @@ export class Utils {
         hashtags.push(word.substring(1).toLowerCase());
       }
     });
-    return hashtags; 
+    return hashtags;
   }
 }

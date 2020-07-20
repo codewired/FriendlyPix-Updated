@@ -17,6 +17,7 @@
 
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+
 try {
   admin.initializeApp();
 } catch (e) {}
@@ -59,7 +60,7 @@ async function sendEmail(snap, context) {
           The user <a href="${userURL}">${user.displayName} ${user.email ? `(${user.email})` : ''}</a>
           has flagged a ${commentId ? 'comment' : 'post'} on FriendlyPix.
           Make sure to review it asap:<br><br>
-          
+
           Post URL on the Web (admin page): ${webURL}<br>
           ${commentId ? 'Comment' : 'Post'} console URL: ${commentId ? commentConsoleUrl : postConsoleURL}<br>
           ${commentId ? '' : `Post image thumbnail: <br>

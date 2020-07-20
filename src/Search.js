@@ -68,8 +68,8 @@ export default class Search {
     const searchString = this.searchField.val().toLowerCase().trim();
     if (searchString.length >= Search.MIN_CHARACTERS) {
       const promises = [
-          this.firebaseHelper.searchUsers(searchString, Search.NB_PEOPLE_RESULTS_LIMIT),
-          this.firebaseHelper.searchHashtags(searchString, Search.NB_HASHTAGS_RESULTS_LIMIT)];
+        this.firebaseHelper.searchUsers(searchString, Search.NB_PEOPLE_RESULTS_LIMIT),
+        this.firebaseHelper.searchHashtags(searchString, Search.NB_HASHTAGS_RESULTS_LIMIT)];
       // Search for People and hashtags.
       const results = await Promise.all(promises);
       const peopleResults = results[0];

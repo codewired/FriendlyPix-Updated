@@ -20,7 +20,7 @@ const glob = require('glob-all');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlCriticalPlugin = require('html-critical-webpack-plugin');
 const {InjectManifest} = require('workbox-webpack-plugin');
@@ -115,10 +115,21 @@ module.exports = (env, argv) => {
     },
     optimization: {
       minimizer: devMode ? [] : [
-        new UglifyJsPlugin({
+        new TerserPlugin({
           cache: true,
           parallel: true,
           sourceMap: true,
+          terserOptions: {
+            warnings: false,
+            parse: {},
+            compress: {},
+            mangle: true, // Note `mangle.properties` is `false` by default.
+            output: null,
+            toplevel: false,
+            nameCache: null,
+            ie8: false,
+            keep_fnames: false,
+          },
         }),
         new OptimizeCssAssetsPlugin({
           cssProcessor: require('cssnano'),
@@ -141,6 +152,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './src/index.html',
         chunks: ['app'],
+        minify: false,
       }),
       new MiniCssExtractPlugin({
         filename: 'css/styles.[hash].css',
@@ -159,9 +171,8 @@ module.exports = (env, argv) => {
         },
       }),
       new InjectManifest({
-        swSrc: 'src/workbox-sw.js',
-        importWorkboxFrom: 'local',
-        importsDirectory: 'workbox',
+        swSrc: './src/workbox-sw.js',
+        swDest: 'workbox-sw.js',
       }),
     ],
   };

@@ -12,8 +12,8 @@ node_modules/**
 .firebaserc
 firebase-debug.log
 functions/node_modules/**
-package-lock.json
-functions/package-lock.json
+yarn.lock
+functions/yarn.lock
 public/fonts
 bundle.js.map
 bundle.js
@@ -22,6 +22,7 @@ styles.css.map
 src/firebase-config.json
 public/firebase-messaging-sw.js
 public/firebase-messaging-sw.js.map
+public/firebase-messaging-sw.js.LICENSE.txt
 public/css
 public/js
 public/index.html

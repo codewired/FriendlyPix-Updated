@@ -69,5 +69,5 @@ function getHashtags(text) {
       hashtags.push(word.substring(1).toLowerCase());
     }
   });
-  return hashtags; 
+  return hashtags;
 }

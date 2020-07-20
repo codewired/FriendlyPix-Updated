@@ -9,6 +9,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "brace-style":"off",
     "strict": 0,
     "camelcase": 0,
     "default-case": 0,
