@@ -28,4 +28,5 @@ public/js
 public/index.html
 public/workbox
 public/workbox-sw.js
+public/workbox-sw.js.map
 hosting.*.cache
