@@ -29,7 +29,7 @@ Server-side micro-services are built on [Cloud Functions for Firebase](https://f
 1. In a console run `firebase use --add` and, when prompted, select the Firebase Project you have just created. This will make sure the Firebase CLI is configured to use your particular project.
 1. From the package.json file run `npm run createfirebaseconf` from the project root to get your firebase app credentaial saved in `./src/firebase-config.json`
 1. You will need to open the contents of the JSON file generated with the step above and edit it to suit the right JSON format. This is the right format:
-    ```{
+    ```{{
           "status": "success",
           "result": {
             "apiKey": "xxxxx",
