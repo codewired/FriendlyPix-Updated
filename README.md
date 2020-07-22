@@ -1,4 +1,4 @@
-# Friendly Pix Web
+# Friendly Pix Web Updated Version (All Dev Dependency and App Modules are Updated!)
 
 Friendly Pix Web is a sample app demonstrating how to build a JavaScript/Web app with the Firebase Platform.
 
@@ -22,11 +22,27 @@ Server-side micro-services are built on [Cloud Functions for Firebase](https://f
 
 ## Create and configure your Firebase Project
 
-1. In a console run `npm install` to install all Build/Deploy tools dependencies.
-1. Create a Firebase project using the [Firebase Console](https://firebase.google.com/console).
+1. In a console run `yarn install` to install all Build/Deploy tools dependencies. (NOTE: Install Yarn via npm for MacOS and Chocolatey for Windows)
+1. Create a Firebase project using the [Firebase Console](https://firebase.google.com/console). Rememeber to create a new App for your new project to assign an `appId` to the project, it is now part of the project creation steps. You can ignore settin up hosting since the tooling will do that for you.
 1. Visit the **Storage** section and enable storage by clicking the **Getting Started** button.
 1. Enable **Google** as a Sign in provider in **Firebase Console > Authentication > Sign in Method** tab.
 1. In a console run `firebase use --add` and, when prompted, select the Firebase Project you have just created. This will make sure the Firebase CLI is configured to use your particular project.
+1. From the package.json file run `npm run createfirebaseconf` from the project root to get your firebase app credentaial saved in `./src/firebase-config.json`
+1. You will need to open the contents of the JSON file generated with the step above and edit it to suit the right JSON format. This is the right format:
+    ```{
+          "status": "success",
+          "result": {
+            "apiKey": "xxxxx",
+            "authDomain": "xxxxx",
+            "databaseURL": "xxxxx",
+            "projectId": "xxxxx",
+            "storageBucket": "xxxxx",
+            "messagingSenderId": "xxxxx",
+            "appId": "xxxxx",
+            "measurementId": "xxxxx"
+          }
+        }
+    ```
 1. [Optional] To enable the automatic inapropriate image blurring, [Enable the Cloud Vision API](https://console.cloud.google.com/apis/api/vision.googleapis.com/overview?project=_) on your project and enable Billing.
 1. [Optional] To enable email notifications for flagged content, set your Mailgun API credentials using:
     ```bash
@@ -40,7 +56,7 @@ Server-side micro-services are built on [Cloud Functions for Firebase](https://f
 You can start a local development server by running:
 
 ```bash
-npm run serve
+yarn serve
 ```
 
 This will start `firebase serve` and make sure your Javascript files are transpiled automatically to ES5.
@@ -60,7 +76,7 @@ To deploy the app run:
 firebase deploy
 ```
 
-Before deploying this will automatically install all runtime dependencies, transpile the Javascript code to ES5 and install Cloud Functions dependencies.
+Before deploying this will automatically transpile the Javascript code to ES5 and install Cloud Functions dependencies with Yarn.
 Then this deploys a new version of your code that will be served from `https://<PROJECT_ID>.firebaseapp.com`
 
 
