@@ -44,7 +44,7 @@ export default class SearchPage {
 
     // Listen for posts deletions.
     this.firebaseHelper.registerForPostsDeletion((postId) =>
-        $(`.fp-post-${postId}`, this.searchPage).remove());
+      $(`.fp-post-${postId}`, this.searchPage).remove());
 
     // Display hashtags posts.
     const data = await this.firebaseHelper.getHastagsPosts(hashtag);
@@ -121,17 +121,19 @@ export default class SearchPage {
    */
   createImageCard(postId, thumbUrl, text) {
     const element = $(`
-        <a class="fp-image mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet
-                  mdl-cell--4-col-desktop mdl-grid mdl-grid--no-spacing">
-            <div class="fp-overlay">
-                <i class="material-icons">favorite</i><span class="likes">0</span>
-                <i class="material-icons">mode_comment</i><span class="comments">0</span>
-                <div class="fp-pic-text"/>
-            </div>
+          <a class="fp-image mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet
+          mdl-cell--4-col-desktop mdl-grid mdl-grid--no-spacing">
+
             <div class="mdl-card mdl-shadow--2dp mdl-cell
-                        mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop"></div>
-        </a>`);
-    $('.fp-pic-text', element).text(text);
+              mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop"></div>
+
+            <i class="material-icons">favorite</i><span class="likes">0</span>
+            <i class="material-icons">mode_comment</i><span class="comments">0</span>
+            &nbsp;
+            <span class="fp-pic-text2">&nbsp;</span>
+
+          </a>`);
+    $('.fp-pic-text2', element).text(text);
     element.attr('href', `/post/${postId}`);
     element.addClass(`fp-post-${postId}`);
     // Display the thumbnail.
