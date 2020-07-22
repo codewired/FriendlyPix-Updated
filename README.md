@@ -24,7 +24,7 @@ Server-side micro-services are built on [Cloud Functions for Firebase](https://f
 
 ## Create and configure your Firebase Project
 
-1. In a console run `yarn install` to install all Build/Deploy tools dependencies. (NOTE: Install Yarn via npm for MacOS and Chocolatey for Windows)
+1. In a console inside the root directory run `yarn` to install all Build/Deploy tools dependencies. (NOTE: Download and Install Yarn via homebrew for MacOS OR Chocolatey for Windows)
 1. Create a Firebase project using the [Firebase Console](https://firebase.google.com/console). Rememeber to create a new App for your new project to assign an `appId` to the project, it is now part of the project creation steps. You can ignore settin up hosting since the tooling will do that for you.
 1. Visit the **Storage** section and enable storage by clicking the **Getting Started** button.
 1. Enable **Google** as a Sign in provider in **Firebase Console > Authentication > Sign in Method** tab.
