@@ -13,6 +13,8 @@ The Friendly Pix frontend is built using JavaScript, [Firebase](https://firebase
 
 Friendly Pix is written in ES2017 using Modules so for wide browser support the code is packed and transpiled to ES5 using [Webpack](https://webpack.js.org/). 
 
+Full Progressive Web App features enabled with a customized [Workbox](https://developers.google.com/web/tools/workbox) service worker.
+
 The Auth flow is using [Firebase-UI](https://github.com/firebase/firebaseui-web).
 
 Javascript Runtime dependencies as well as Build and deploy dependecies are managed using [npm](http://npmjs.com/). 
