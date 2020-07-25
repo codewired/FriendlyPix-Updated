@@ -1,4 +1,4 @@
-# Friendly Pix Web Updated Version (All dependencies and modules are Updated!)
+# Friendly Pix Web Updated Version (All dependencies and modules updated!)
 
 Friendly Pix Web is a sample app demonstrating how to build a JavaScript/Web app with the Firebase Platform.
 
