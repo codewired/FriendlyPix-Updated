@@ -29,8 +29,8 @@ Server-side micro-services are built on [Cloud Functions for Firebase](https://f
 1. Visit the **Storage** section and enable storage by clicking the **Getting Started** button.
 1. Enable **Google** as a Sign in provider in **Firebase Console > Authentication > Sign in Method** tab.
 1. In a console run `firebase use --add` and, when prompted, select the Firebase Project you have just created. This will make sure the Firebase CLI is configured to use your particular project.
-1. From the package.json file run `npm run createfirebaseconf` from the project root to get your firebase app credentaial saved in `./src/firebase-config.json`
-1. You will need to open the contents of the JSON file generated with the step above and edit it to suit the right JSON format. This is the right format:
+1. If you configured firebase correctly from above steps then run `yarn createfirebaseconf` from the project root to generate your firebase app credentaials, it will export to the current directory in `./src/firebase-config.json`
+1. You will need to open the contents of the JSON file generated from the step above with your favorite editor and change the format slightly to enable the FireBase Helper class read your settings. Here is the right format below:
     ```
      {
           "status": "success",
